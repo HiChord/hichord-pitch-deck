@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiChord Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #FAFAFA;
+            color: #0A0A0A;
+            line-height: 1.6;
+            padding: 60px 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 80px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #0A0A0A;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #4B5563;
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            color: #0A0A0A;
+            padding-left: 20px;
+            border-left: 4px solid #FF6B35;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #0A0A0A;
+        }
+
+        .lead {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #0A0A0A;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4B5563;
+        }
+
+        .key-point {
+            background: #F9FAFB;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-left: 4px solid #FF6B35;
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 500;
+            color: #0A0A0A;
+        }
+
+        .highlight {
+            background: #FEF3C7;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-left: 4px solid #F59E0B;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #92400E;
+            font-weight: 500;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .stat-grid.single {
+            grid-template-columns: 1fr;
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 35px 20px;
+            background: #F9FAFB;
+            border-radius: 4px;
+            border: 2px solid #E5E7EB;
+        }
+
+        .stat-number {
+            font-size: 38px;
+            font-weight: 700;
+            color: #0A0A0A;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B7280;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            background: #F9FAFB;
+            padding: 20px;
+            border-left: 3px solid #FF6B35;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            color: #0A0A0A;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #4B5563;
+        }
+
+        .bullet-section {
+            margin: 25px 0;
+        }
+
+        .bullet-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6B7280;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: #4B5563;
+        }
+
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .compact-list li {
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .artist-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .artist {
+            padding: 10px 16px;
+            background: #F3F4F6;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1F2937;
+            border: 1px solid #E5E7EB;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .partner {
+            background: #F9FAFB;
+            padding: 18px;
+            border-left: 3px solid #D1D5DB;
+        }
+
+        .partner-name {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #0A0A0A;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .partner-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #6B7280;
+        }
+
+        .divider {
+            border: 0;
+            border-top: 1px solid #E5E7EB;
+            margin: 50px 0;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #E5E7EB;
+            text-align: center;
+        }
+
+        .footer-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #0A0A0A;
+        }
+
+        .footer-title {
+            font-size: 13px;
+            color: #6B7280;
+            margin-bottom: 12px;
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: #FF6B35;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .quickstart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .quickstart-step {
+            background: #F0FDF4;
+            padding: 18px;
+            border-left: 3px solid #22C55E;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .quickstart-step-number {
+            font-weight: 700;
+            font-size: 11px;
+            color: #22C55E;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .quickstart-step-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #0A0A0A;
+        }
+
+        .quickstart-step-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #4B5563;
+        }
+
+        .quickstart-step.full-width {
+            grid-column: span 2;
+        }
+
+        .function-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .function-btn {
+            background: #F3F4F6;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #E5E7EB;
+        }
+
+        .function-btn-label {
+            font-weight: 700;
+            font-size: 16px;
+            color: #FF6B35;
+            margin-bottom: 4px;
+        }
+
+        .function-btn-desc {
+            font-size: 11px;
+            color: #6B7280;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 60px;">
+            <h1 style="margin-bottom: 0;">HiChord</h1>
+            <span style="font-size: 20px; color: #6B7280; font-weight: 400; position: relative; top: 8px;">™</span>
+        </div>
+
+        <!-- Quick Start Guide Section -->
+        <h2 style="margin-top: 0;">Quick Start Guide</h2>
+
+        <p class="lead">Skip the music theory — start playing immediately. Here's how to get started in 5 simple steps.</p>
+
+        <div class="quickstart-grid">
+            <div class="quickstart-step">
+                <div class="quickstart-step-number">Step 1</div>
+                <div class="quickstart-step-title">Power & Volume</div>
+                <div class="quickstart-step-desc">Slide the red power button on top. Adjust the volume slider for headphones or speakers.</div>
+            </div>
+            <div class="quickstart-step">
+                <div class="quickstart-step-number">Step 2</div>
+                <div class="quickstart-step-title">Play Your First Chord</div>
+                <div class="quickstart-step-desc">Press any of the 7 chord buttons (1-7). Each represents a scale degree — all chords naturally work together.</div>
+            </div>
+            <div class="quickstart-step">
+                <div class="quickstart-step-number">Step 3</div>
+                <div class="quickstart-step-title">Explore Sounds</div>
+                <div class="quickstart-step-desc">Press F2, then use the joystick left/right to browse different waveforms and synthesis engines.</div>
+            </div>
+            <div class="quickstart-step">
+                <div class="quickstart-step-number">Step 4</div>
+                <div class="quickstart-step-title">Add Effects</div>
+                <div class="quickstart-step-desc">From the sounds menu, move the joystick up to enter effects. Navigate to reverb or delay and toggle them on.</div>
+            </div>
+            <div class="quickstart-step full-width">
+                <div class="quickstart-step-number">Step 5</div>
+                <div class="quickstart-step-title">Transpose Keys</div>
+                <div class="quickstart-step-desc">Press F1, then joystick LEFT/RIGHT to transpose the instrument to different keys instantly.</div>
+            </div>
+        </div>
+
+        <h3>Function Buttons</h3>
+        <div class="function-buttons">
+            <div class="function-btn">
+                <div class="function-btn-label">F1</div>
+                <div class="function-btn-desc">Settings & Key</div>
+            </div>
+            <div class="function-btn">
+                <div class="function-btn-label">F2</div>
+                <div class="function-btn-desc">Effects & Sounds</div>
+            </div>
+            <div class="function-btn">
+                <div class="function-btn-label">F3</div>
+                <div class="function-btn-desc">Mode & Tempo</div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <p class="lead">A pocket-sized, all-in-one music production instrument that gives anyone immediate access to thousands of chords — no music theory required.</p>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="./HiChord-Aluminum.png" alt="HiChord Device" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        </div>
+
+        <div class="bullet-section">
+            <div class="bullet-title">How It Works</div>
+            <ul class="compact-list">
+                <li>7 Chord buttons represent the chords that naturally work together in any key</li>
+                <li>Patent-Pending Chord-Modifying Joystick changes chord character in real time (major, minor, 7th, suspended, etc.)</li>
+                <li>Because there are no wrong notes, anyone can make music immediately</li>
+            </ul>
+        </div>
+
+        <div class="key-point">
+            The interface feels more like a game controller than a synthesizer — natural, playful, and instantly accessible.
+        </div>
+
+        <h3>Dual Market Appeal</h3>
+
+        <div class="feature-grid">
+            <div class="feature-box">
+                <div class="feature-title">Accessible Market</div>
+                <div class="feature-desc">Kids, gamers, and hobbyists — instantly musical, fun, and accessible</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-title">Professional Market</div>
+                <div class="feature-desc">Musicians and producers — portable, expressive, and sonically powerful</div>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px; font-weight: 500;">Approachable enough for beginners yet deep enough for studios — bridging both sides of the market in one device.</p>
+
+        <hr class="divider">
+
+        <h2>Power + Capability</h2>
+
+        <p class="lead">Despite its size, HiChord delivers the power of a full studio in one handheld instrument.</p>
+
+        <div class="bullet-section">
+            <div class="bullet-title">Core Engine</div>
+            <ul class="compact-list">
+                <li>12-voice stereo engine built on Daisy Seed platform (400 MHz ARM Cortex-M7)</li>
+                <li>Four sound engines: Analog synthesis · FM synthesis · Sample playback · Hybrid mode</li>
+            </ul>
+        </div>
+
+        <div class="bullet-section">
+            <div class="bullet-title">Production Suite</div>
+            <ul class="compact-list">
+                <li>Drums · 16-step sequencer · 2-track looper · Arpeggiator</li>
+                <li>Full FX: reverb, delay, chorus, flanger, filter, ADSR</li>
+                <li>Built-in microphone for live sampling and sound capture</li>
+            </ul>
+        </div>
+
+        <div class="bullet-section">
+            <div class="bullet-title">Connectivity</div>
+            <ul class="compact-list">
+                <li>USB-C audio + MIDI for instant DAW integration</li>
+                <li>Massive battery life for true portability</li>
+                <li>Continuous firmware updates — every batch adds new sounds, modes, and refinements</li>
+            </ul>
+        </div>
+
+        <hr class="divider">
+
+        <h2>The Journey So Far</h2>
+
+        <h3>2024 — R&D Year</h3>
+        <ul class="compact-list">
+            <li>Incorporated and launched Kickstarter (1,000 units, $300K revenue)</li>
+            <li>Set up California manufacturing + international logistics and fulfillment</li>
+        </ul>
+
+        <h3>2025 — Commercial Launch & Scale</h3>
+
+        <div class="stat-grid single">
+            <div class="stat">
+                <div class="stat-number">4,000+</div>
+                <div class="stat-label">Units Shipped</div>
+            </div>
+        </div>
+
+        <div class="key-point">
+            Bootstrapped and profitable — funded entirely through Kickstarter and pre-orders, with no outside investment.
+        </div>
+
+        <ul class="compact-list">
+            <li>Added built-in microphone and long-life battery directly from user feedback</li>
+            <li>Relocated production to Qplus (Malaysia) to reduce COGS, increase capacity, and mitigate tariff exposure</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h2>Community & Traction</h2>
+
+        <div class="stat-grid">
+            <div class="stat">
+                <div class="stat-number">26M+</div>
+                <div class="stat-label">Instagram Views</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">37K+</div>
+                <div class="stat-label">Email Subscribers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$0</div>
+                <div class="stat-label">Monthly Marketing Spend</div>
+            </div>
+        </div>
+
+        <h3>Notable Users</h3>
+        <div class="artist-grid">
+            <div class="artist">Deadmau5</div>
+            <div class="artist">Steve Aoki</div>
+            <div class="artist">Mike Dean</div>
+            <div class="artist">Ty Dolla $ign</div>
+            <div class="artist">Kaskade</div>
+            <div class="artist">Kenny Beats</div>
+            <div class="artist">Blake Mills</div>
+            <div class="artist">Frank Dukes</div>
+            <div class="artist">Jay Electronica</div>
+        </div>
+
+        <ul class="compact-list" style="margin-top: 25px;">
+            <li>After seeing HiChord, Deadmau5 invited us to his studio to collaborate and contributed feedback and portions of the firmware code</li>
+            <li>Customers continue to create their own viral content — the community has effectively become the marketing engine</li>
+        </ul>
+
+        <div class="highlight">
+            Example: an unpaid customer video reached 3M+ views → <a href="https://www.youtube.com/watch?v=Itn9lI0VK0U&list=RDItn9lI0VK0U&start_radio=1" style="color: #92400E; font-weight: 600; text-decoration: underline;">YouTube link</a>
+        </div>
+
+        <hr class="divider">
+
+        <h2>Team & Structure</h2>
+
+        <div class="key-point">
+            HiChord is a one-person company — 100% founder owned and operated. All design, firmware, and R&D are handled directly.
+        </div>
+
+        <h3>Strategic Partners</h3>
+
+        <div class="partner-grid">
+            <div class="partner">
+                <div class="partner-name">Metric Designworks</div>
+                <div class="partner-desc">Industrial design + manufacturing consulting (Teenage Engineering, Playdate, Casio, Vizio)</div>
+            </div>
+            <div class="partner">
+                <div class="partner-name">ShipBob</div>
+                <div class="partner-desc">Global logistics & fulfillment</div>
+            </div>
+            <div class="partner">
+                <div class="partner-name">TalentPop</div>
+                <div class="partner-desc">Customer experience & support</div>
+            </div>
+            <div class="partner">
+                <div class="partner-name">FirstCFO</div>
+                <div class="partner-desc">Fractional finance leadership</div>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px; font-weight: 500;">This lean structure enables enterprise-level execution with almost no overhead.</p>
+
+        <hr class="divider">
+
+        <h2>Short Term Goals</h2>
+
+        <div class="bullet-section">
+            <div class="bullet-title">International Expansion</div>
+            <ul class="compact-list">
+                <li>International customers currently pay $100+ per order for shipping from California</li>
+                <li>Despite high shipping costs, international sales remain strong — establishing regional fulfillment centers will unlock significant growth</li>
+            </ul>
+        </div>
+
+        <div class="bullet-section">
+            <div class="bullet-title">Inventory Building</div>
+            <ul class="compact-list">
+                <li>HiChord has operated exclusively on pre-orders, with customers ordering months before ship dates</li>
+                <li>Building ready-to-ship inventory with short lead times will accelerate sales velocity</li>
+            </ul>
+        </div>
+
+        <div class="bullet-section">
+            <div class="bullet-title">Retail Expansion</div>
+            <ul class="compact-list">
+                <li>Small trials at influential retailers (Perfect Circuit, Chicago Music Exchange) sold out immediately</li>
+                <li>Retail distributor has committed to taking as many units as we can produce</li>
+                <li>Primary focus will continue to be D2C, but retail partnerships provide local ambassadors and hands-on product discovery</li>
+                <li>Inventory constraints have been the primary barrier to retail growth</li>
+            </ul>
+        </div>
+
+        <h3>Long Term Vision</h3>
+
+        <div class="key-point">
+            To establish HiChord as an enduring instrument in the lineage of timeless classics — the 808, the Wurlitzer, the Juno-106 — tools that define eras and inspire generations.
+        </div>
+
+        <p style="margin-top: 20px;">Musicians invest in instruments they know will remain valuable, supported, and relevant for decades. Building HiChord to last ensures customers can rely on continuous innovation, long-term firmware support, and a growing creative community.</p>
+
+        <hr class="divider">
+
+        <h2>Why It Resonates</h2>
+
+        <div class="key-point">
+            HiChord merges instant playability with professional power — it feels like a game but performs like a studio instrument.
+        </div>
+
+        <p class="lead" style="margin-top: 25px;">That combination makes it both emotionally engaging and commercially scalable.</p>
+
+        <div class="footer">
+            <a href="https://hichord.shop" class="footer-link">HiChord.shop</a>
+            <span style="color: #D1D5DB; margin: 0 12px;">·</span>
+            <a href="https://www.instagram.com/hi.chord/" class="footer-link">@hi.chord</a>
+        </div>
+    </div>
+</body>
+</html>
