@@ -358,6 +358,72 @@
             color: #6B7280;
         }
 
+        /* Collapsible quickstart section */
+        .collapsible-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible-header h2 {
+            margin-right: 12px;
+        }
+
+        .collapse-toggle {
+            font-size: 14px;
+            color: #6B7280;
+            background: #F3F4F6;
+            border: 1px solid #E5E7EB;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .collapsible-header:hover .collapse-toggle {
+            background: #E5E7EB;
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+        }
+
+        /* Menu key icons */
+        .menu-key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #FF6B35;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin: 0 2px;
+        }
+
+        .menu-key svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .function-btn .menu-key {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 6px;
+        }
+
+        .function-btn .menu-key svg {
+            width: 20px;
+            height: 20px;
+        }
+
         @media print {
             body {
                 padding: 0;
@@ -377,52 +443,57 @@
             <span style="font-size: 20px; color: #6B7280; font-weight: 400; position: relative; top: 8px;">™</span>
         </div>
 
-        <!-- Quick Start Guide Section -->
-        <h2 style="margin-top: 0;">Quick Start Guide</h2>
-
-        <p class="lead">Skip the music theory — start playing immediately. Here's how to get started in 5 simple steps.</p>
-
-        <div class="quickstart-grid">
-            <div class="quickstart-step">
-                <div class="quickstart-step-number">Step 1</div>
-                <div class="quickstart-step-title">Power & Volume</div>
-                <div class="quickstart-step-desc">Slide the red power button on top. Adjust the volume slider for headphones or speakers.</div>
-            </div>
-            <div class="quickstart-step">
-                <div class="quickstart-step-number">Step 2</div>
-                <div class="quickstart-step-title">Play Your First Chord</div>
-                <div class="quickstart-step-desc">Press any of the 7 chord buttons (1-7). Each represents a scale degree — all chords naturally work together.</div>
-            </div>
-            <div class="quickstart-step">
-                <div class="quickstart-step-number">Step 3</div>
-                <div class="quickstart-step-title">Explore Sounds</div>
-                <div class="quickstart-step-desc">Press F2, then use the joystick left/right to browse different waveforms and synthesis engines.</div>
-            </div>
-            <div class="quickstart-step">
-                <div class="quickstart-step-number">Step 4</div>
-                <div class="quickstart-step-title">Add Effects</div>
-                <div class="quickstart-step-desc">From the sounds menu, move the joystick up to enter effects. Navigate to reverb or delay and toggle them on.</div>
-            </div>
-            <div class="quickstart-step full-width">
-                <div class="quickstart-step-number">Step 5</div>
-                <div class="quickstart-step-title">Transpose Keys</div>
-                <div class="quickstart-step-desc">Press F1, then joystick LEFT/RIGHT to transpose the instrument to different keys instantly.</div>
-            </div>
+        <!-- Quick Start Guide Section (Collapsible) -->
+        <div class="collapsible-header" onclick="toggleQuickstart()">
+            <h2 style="margin-top: 0;">Quick Start Guide</h2>
+            <span class="collapse-toggle" id="toggleBtn">Show ▼</span>
         </div>
 
-        <h3>Function Buttons</h3>
-        <div class="function-buttons">
-            <div class="function-btn">
-                <div class="function-btn-label">F1</div>
-                <div class="function-btn-desc">Settings & Key</div>
+        <div class="collapsible-content" id="quickstartContent">
+            <p class="lead">Skip the music theory — start playing immediately. Here's how to get started in 5 simple steps.</p>
+
+            <div class="quickstart-grid">
+                <div class="quickstart-step">
+                    <div class="quickstart-step-number">Step 1</div>
+                    <div class="quickstart-step-title">Power & Volume</div>
+                    <div class="quickstart-step-desc">Slide the red power button on top. Adjust the volume slider for headphones or speakers.</div>
+                </div>
+                <div class="quickstart-step">
+                    <div class="quickstart-step-number">Step 2</div>
+                    <div class="quickstart-step-title">Play Your First Chord</div>
+                    <div class="quickstart-step-desc">Press any of the 7 chord buttons (1-7). Each represents a scale degree — all chords naturally work together.</div>
+                </div>
+                <div class="quickstart-step">
+                    <div class="quickstart-step-number">Step 3</div>
+                    <div class="quickstart-step-title">Explore Sounds</div>
+                    <div class="quickstart-step-desc">Press <span class="menu-key"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 3,9 7,9 7,17 11,17 11,9 15,9 15,17 19,17 19,9 21,9"/></svg></span>, then use the joystick left/right to browse different waveforms and synthesis engines.</div>
+                </div>
+                <div class="quickstart-step">
+                    <div class="quickstart-step-number">Step 4</div>
+                    <div class="quickstart-step-title">Add Effects</div>
+                    <div class="quickstart-step-desc">From the sounds menu, move the joystick up to enter effects. Navigate to reverb or delay and toggle them on.</div>
+                </div>
+                <div class="quickstart-step full-width">
+                    <div class="quickstart-step-number">Step 5</div>
+                    <div class="quickstart-step-title">Transpose Keys</div>
+                    <div class="quickstart-step-desc">Press <span class="menu-key"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="14" r="3.5"/><line x1="9.5" y1="11.5" x2="18" y2="3"/><line x1="16" y1="5" x2="16" y2="3"/></svg></span>, then joystick LEFT/RIGHT to transpose the instrument to different keys instantly.</div>
+                </div>
             </div>
-            <div class="function-btn">
-                <div class="function-btn-label">F2</div>
-                <div class="function-btn-desc">Effects & Sounds</div>
-            </div>
-            <div class="function-btn">
-                <div class="function-btn-label">F3</div>
-                <div class="function-btn-desc">Mode & Tempo</div>
+
+            <h3>Menu Buttons</h3>
+            <div class="function-buttons">
+                <div class="function-btn">
+                    <span class="menu-key"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="14" r="3.5"/><line x1="9.5" y1="11.5" x2="18" y2="3"/><line x1="16" y1="5" x2="16" y2="3"/></svg></span>
+                    <div class="function-btn-desc">Settings & Key</div>
+                </div>
+                <div class="function-btn">
+                    <span class="menu-key"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 3,9 7,9 7,17 11,17 11,9 15,9 15,17 19,17 19,9 21,9"/></svg></span>
+                    <div class="function-btn-desc">Effects & Sounds</div>
+                </div>
+                <div class="function-btn">
+                    <span class="menu-key"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="12" x2="12" y2="6"/><line x1="12" y1="12" x2="17" y2="12"/></svg></span>
+                    <div class="function-btn-desc">Mode & Tempo</div>
+                </div>
             </div>
         </div>
 
@@ -437,9 +508,9 @@
         <div class="bullet-section">
             <div class="bullet-title">How It Works</div>
             <ul class="compact-list">
-                <li>7 Chord buttons represent the chords that naturally work together in any key</li>
-                <li>Patent-Pending Chord-Modifying Joystick changes chord character in real time (major, minor, 7th, suspended, etc.)</li>
-                <li>Because there are no wrong notes, anyone can make music immediately</li>
+                <li>7 Chord buttons represent the chords that naturally work together in any key.</li>
+                <li>Patent-Pending Chord-Modifying Joystick changes chord character in real time (major, minor, 7th, suspended, etc.).</li>
+                <li>Because there are no wrong notes, anyone can make music immediately.</li>
             </ul>
         </div>
 
@@ -452,11 +523,11 @@
         <div class="feature-grid">
             <div class="feature-box">
                 <div class="feature-title">Accessible Market</div>
-                <div class="feature-desc">Kids, gamers, and hobbyists — instantly musical, fun, and accessible</div>
+                <div class="feature-desc">Kids, gamers, and hobbyists — instantly musical, fun, and accessible.</div>
             </div>
             <div class="feature-box">
                 <div class="feature-title">Professional Market</div>
-                <div class="feature-desc">Musicians and producers — portable, expressive, and sonically powerful</div>
+                <div class="feature-desc">Musicians and producers — portable, expressive, and sonically powerful.</div>
             </div>
         </div>
 
@@ -471,26 +542,26 @@
         <div class="bullet-section">
             <div class="bullet-title">Core Engine</div>
             <ul class="compact-list">
-                <li>12-voice stereo engine built on Daisy Seed platform (400 MHz ARM Cortex-M7)</li>
-                <li>Four sound engines: Analog synthesis · FM synthesis · Sample playback · Hybrid mode</li>
+                <li>12-voice stereo engine built on Daisy Seed platform (400 MHz ARM Cortex-M7).</li>
+                <li>Four sound engines: Analog synthesis · FM synthesis · Sample playback · Hybrid mode.</li>
             </ul>
         </div>
 
         <div class="bullet-section">
             <div class="bullet-title">Production Suite</div>
             <ul class="compact-list">
-                <li>Drums · 16-step sequencer · 2-track looper · Arpeggiator</li>
-                <li>Full FX: reverb, delay, chorus, flanger, filter, ADSR</li>
-                <li>Built-in microphone for live sampling and sound capture</li>
+                <li>Drums · 16-step sequencer · 2-track looper · Arpeggiator.</li>
+                <li>Full FX: reverb, delay, chorus, flanger, filter, ADSR.</li>
+                <li>Built-in microphone for live sampling and sound capture.</li>
             </ul>
         </div>
 
         <div class="bullet-section">
             <div class="bullet-title">Connectivity</div>
             <ul class="compact-list">
-                <li>USB-C audio + MIDI for instant DAW integration</li>
-                <li>Massive battery life for true portability</li>
-                <li>Continuous firmware updates — every batch adds new sounds, modes, and refinements</li>
+                <li>USB-C audio + MIDI for instant DAW integration.</li>
+                <li>Massive battery life for true portability.</li>
+                <li>Continuous firmware updates — every batch adds new sounds, modes, and refinements.</li>
             </ul>
         </div>
 
@@ -500,27 +571,36 @@
 
         <h3>2024 — R&D Year</h3>
         <ul class="compact-list">
-            <li>Incorporated and launched Kickstarter (1,000 units, $300K revenue)</li>
-            <li>Set up California manufacturing + international logistics and fulfillment</li>
+            <li>Incorporated and launched Kickstarter (1,000 units, $300K revenue).</li>
+            <li>Set up California manufacturing + international logistics and fulfillment.</li>
         </ul>
 
         <h3>2025 — Commercial Launch & Scale</h3>
+        <ul class="compact-list">
+            <li>Added built-in microphone and long-life battery directly from user feedback.</li>
+            <li>Relocated production to Qplus (Malaysia) to reduce COGS, increase capacity, and mitigate tariff exposure.</li>
+        </ul>
 
-        <div class="stat-grid single">
+        <h3>2026 — Current</h3>
+
+        <div class="stat-grid">
             <div class="stat">
-                <div class="stat-number">4,000+</div>
-                <div class="stat-label">Units Shipped</div>
+                <div class="stat-number">5,300+</div>
+                <div class="stat-label">Total Units Shipped</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1,300</div>
+                <div class="stat-label">Units in 2026</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$1.7M+</div>
+                <div class="stat-label">Total Revenue</div>
             </div>
         </div>
 
         <div class="key-point">
             Bootstrapped and profitable — funded entirely through Kickstarter and pre-orders, with no outside investment.
         </div>
-
-        <ul class="compact-list">
-            <li>Added built-in microphone and long-life battery directly from user feedback</li>
-            <li>Relocated production to Qplus (Malaysia) to reduce COGS, increase capacity, and mitigate tariff exposure</li>
-        </ul>
 
         <hr class="divider">
 
@@ -555,8 +635,8 @@
         </div>
 
         <ul class="compact-list" style="margin-top: 25px;">
-            <li>After seeing HiChord, Deadmau5 invited us to his studio to collaborate and contributed feedback and portions of the firmware code</li>
-            <li>Customers continue to create their own viral content — the community has effectively become the marketing engine</li>
+            <li>After seeing HiChord, Deadmau5 invited us to his studio to collaborate and contributed feedback and portions of the firmware code.</li>
+            <li>Customers continue to create their own viral content — the community has effectively become the marketing engine.</li>
         </ul>
 
         <div class="highlight">
@@ -601,26 +681,26 @@
         <div class="bullet-section">
             <div class="bullet-title">International Expansion</div>
             <ul class="compact-list">
-                <li>International customers currently pay $100+ per order for shipping from California</li>
-                <li>Despite high shipping costs, international sales remain strong — establishing regional fulfillment centers will unlock significant growth</li>
+                <li>International customers currently pay $100+ per order for shipping from California.</li>
+                <li>Despite high shipping costs, international sales remain strong — establishing regional fulfillment centers will unlock significant growth.</li>
             </ul>
         </div>
 
         <div class="bullet-section">
             <div class="bullet-title">Inventory Building</div>
             <ul class="compact-list">
-                <li>HiChord has operated exclusively on pre-orders, with customers ordering months before ship dates</li>
-                <li>Building ready-to-ship inventory with short lead times will accelerate sales velocity</li>
+                <li>HiChord has operated exclusively on pre-orders, with customers ordering months before ship dates.</li>
+                <li>Building ready-to-ship inventory with short lead times will accelerate sales velocity.</li>
             </ul>
         </div>
 
         <div class="bullet-section">
             <div class="bullet-title">Retail Expansion</div>
             <ul class="compact-list">
-                <li>Small trials at influential retailers (Perfect Circuit, Chicago Music Exchange) sold out immediately</li>
-                <li>Retail distributor has committed to taking as many units as we can produce</li>
-                <li>Primary focus will continue to be D2C, but retail partnerships provide local ambassadors and hands-on product discovery</li>
-                <li>Inventory constraints have been the primary barrier to retail growth</li>
+                <li>Small trials at influential retailers (Perfect Circuit, Chicago Music Exchange) sold out immediately.</li>
+                <li>Retail distributor has committed to taking as many units as we can produce.</li>
+                <li>Primary focus will continue to be D2C, but retail partnerships provide local ambassadors and hands-on product discovery.</li>
+                <li>Inventory constraints have been the primary barrier to retail growth.</li>
             </ul>
         </div>
 
@@ -648,5 +728,19 @@
             <a href="https://www.instagram.com/hi.chord/" class="footer-link">@hi.chord</a>
         </div>
     </div>
+
+    <script>
+        function toggleQuickstart() {
+            const content = document.getElementById('quickstartContent');
+            const btn = document.getElementById('toggleBtn');
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                btn.textContent = 'Show ▼';
+            } else {
+                content.classList.add('expanded');
+                btn.textContent = 'Hide ▲';
+            }
+        }
+    </script>
 </body>
 </html>
